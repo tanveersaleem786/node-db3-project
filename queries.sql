@@ -23,3 +23,21 @@ SELECT o."Id" "OrderId", c."CompanyName" "CustomerCompanyName", e."LastName" "Em
 FROM  "Order" AS o
 JOIN "Customer" AS c ON o."CustomerId" = c."Id" 
 JOIN "Employee" AS e ON o."EmployeeId" = e."Id";
+
+
+-- ----------------------------------------Stretch Tasks --------------------------------
+
+-- Displays CategoryName and a new column called Count that shows how many products are in each category. Shows 8 records.
+SELECT c."CategoryName", COUNT(*) AS "Count" 
+FROM "Categories" AS c
+JOIN "Products" AS p ON c."CategoryID" = p."CategoryID" 
+GROUP BY c."CategoryName";
+
+-- Display OrderID and a column called ItemCount that shows the total number of products placed on the order. Shows 196 records
+SELECT o."OrderID", SUM(od."Quantity") AS "ItemCount" 
+FROM "Orders" AS o
+JOIN "OrderDetails" AS od ON o."OrderID" = od."OrderID" 
+GROUP BY o."OrderID";
+
+
+        
